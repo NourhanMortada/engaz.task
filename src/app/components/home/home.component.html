@@ -1,0 +1,105 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Names</th>
+        <th scope="col">lastneme</th>
+        <th scope="col">email</th>
+        <th scope="col">cell number</th>
+        <th scope="col">home number</th>
+        <th scope="col">duplicate of</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let x of data">
+     
+        <td>{{x.first_name}}</td>
+        <td>{{x.last_name}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.cell_phone}}</td>
+        <td>{{x.home_phone}}</td>
+        <td #duplicateEl>{{x.duplicate_of}}</td>
+
+        <td><button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getData(x)" >Update</button></td>
+       
+        <td><button class="btn btn-primary" [routerLink]="['/viewDublicate/'+x.lead_id]">View Duplicate</button></td>
+      
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="leadDetails">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">first Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="first_name">
+                 
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">last Name </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="last_name">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Home Phone</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="home_phone">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Source</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="source">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">cell phone</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="cell_phone">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">duplicate of</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="duplicate_of">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> potential duplicates</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="potential_duplicates">
+                 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1"  class="form-label"> lead Id</label>
+                    <input type="text"  readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="lead_id">
+                 
+                  </div>
+               
+            
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="close()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="update(x.lead_id)">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tr>
+      
+
+    </tbody>
+
+
+
+
+          
+                 
+                   
+    
+                    
+                   
